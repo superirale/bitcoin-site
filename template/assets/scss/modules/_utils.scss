@@ -1,0 +1,62 @@
+.p-bold {
+  font-size: 20px;
+  font-weight: 200;
+  padding-top: 1.2rem;
+}
+.blue {
+  .step-left {
+    color: #fff;
+    background-color: #3e98f5;
+    border: 0px;
+  }
+  .step-right {
+    color: #3e98f5;
+    p {
+      color: #3e98f5;
+
+    }
+  }
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  .flex-grp {
+    flex: 100%;
+    display: flex;
+    margin-right: 0;
+    border-radius: 0;
+    background-color: #fff;
+    .btn {
+      flex: 1;
+    }
+  }
+}
+.form-reset {
+  border-radius: 0;
+  height: 48px!important;
+  display: flex;
+}
+.form-group {
+  padding: 8px;
+  background-color: #fff;
+  margin-bottom: 0;
+  border-radius: 0;
+  button {
+    padding-top: 12px;
+    height: 48px;
+    width: 100%;
+    color: #fff;
+    text-transform: uppercase;
+    padding: auto;
+    font-size: 20px;
+    padding: auto;
+  }
+}
+
+.pb-16{
+  padding-bottom: 16px!important;
+}
+.flex-c {
+  display: flex;
+  justify-content: center;
+}

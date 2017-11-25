@@ -1,0 +1,46 @@
+footer {
+  padding: 48px 72px 24px;
+  background-color: #222;
+}
+.footer-links {
+  color: #fff;
+  font-size: 17px;
+  list-style-type: none;
+  text-transform: uppercase;
+  .link-title {
+    padding-bottom: 30px;
+  }
+}
+.link-list {
+  list-style-type: none;
+  padding: 0;
+  text-transform: none;
+  a {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.7;
+    line-height: 2em;
+  }
+  p {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.7;
+    line-height: 2em;
+    margin: 0;
+    line-height: 1.8;
+  }
+}
+.foot-logos {
+  padding-top: 166px;
+  padding-bottom: 25px;
+}
+.foot-logo {
+  max-height: 25px;
+  padding: 5px 10px;
+}
+.foot-icon {
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

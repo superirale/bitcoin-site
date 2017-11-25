@@ -1,0 +1,141 @@
+main {
+  background-color: $brand-color;
+}
+.features {
+  padding-top: 160px;
+}
+.card {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0 28px 156px;
+  .card-media {
+    padding: 60px 32px 0 0;
+  }
+  .card-body {
+    padding: 0;
+    p {
+      padding-top: 1rem;
+      color: #525c67;
+      line-height: 1.64;
+      font-size: 0.875rem;
+      width: 310px;
+    }
+  }
+  .card-title {
+    text-align: left;
+    font-weight: bold;
+    color: #343c41;
+    text-transform: uppercase;
+  }
+}
+.partners {
+  margin-top: 10px;
+  padding-bottom: 120px;
+}
+.section-head {
+  font-weight: bold;
+  text-transform: uppercase;;
+  text-align: center;
+  padding-bottom: 75px;
+  font-size: 32px;
+}
+.partner-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 144px;
+  flex: 1;
+}
+.partner-item {
+  p {
+    white-space: wrap;
+    color: #525c67;
+    font-size: 14px;
+    padding-right: 2.85em;
+    padding-top: 2em;
+  }
+}
+.partner-logo {
+  max-height: 40px;
+  padding-bottom: 17px;
+  img {
+    height: auto;
+    width: 140px;
+  }
+}
+
+.start {
+  padding: 90px 247px 0px;
+  background-color: #f2f3f5;
+}
+.start-steps {
+  display: flex;
+  flex-direction: column;
+}
+.step {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 66px;
+}
+.step-left {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+  border-radius: 50%;
+  border: 1px solid #b3b3b3;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+.step-right {
+  padding-left: 32px;
+  color: #525c67;
+  h5 {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.88;
+    padding-top: 1em;
+    color: #525c67;
+    margin-bottom: 0;
+  }
+}
+.testimonial {
+  padding: 120px 247px 30px;
+}
+.testimonial-body {
+  text-align: center;
+  p {
+    margin: 0;
+    padding-bottom: 80px;
+    text-align: justify;
+    color: #525c67;
+  }
+  button.btn {
+    width: 150px;
+    text-transform: uppercase;
+  }
+}
+
+.media-partners {
+  padding: 90px 247px 120px;
+}
+.logo-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.media-body {
+  margin: 0 auto
+}
+.media-logo {
+  img {
+    padding: 10px 45px;
+  }
+}

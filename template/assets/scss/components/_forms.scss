@@ -1,0 +1,37 @@
+.bit-form {
+  margin-right: auto;
+  padding-right: auto;
+  width: 400px;
+  height: 294px;
+}
+.form-tab {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  &.active {
+    color: #9b9b9b;
+    background-color: #fff;
+  }
+
+  li {
+    width: 200px;
+    height: 48px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  a {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background-color: #525c67;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

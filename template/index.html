@@ -1,0 +1,406 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Project-Bitcoin</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="assets/vendors/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/vendors/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-light main-nav">
+        <a class="navbar-brand logo" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse sub-nav" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Chart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Signup</a>
+            </li>
+            <button class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-text">
+          <h1 class="">BitCoin Market you can trust</h1>
+          <p class="p-bold">Buy, sell and trade bitcoin</p>
+        </div>
+      </div>
+
+      <div class="row row--hero">
+        <div class="col-6">
+          <div class="bit-form">
+            <!-- <img src="assets/img/group-20.png" alt="BitCoin Graph"> -->
+            <ul class="form-tab" id="myTab" role="tablist" data-tabs="tabs">
+              <li class="">
+                <a class="form-tab active" name="form-tab" id="buy-tab" href="#buy" role="tab" aria-controls="home">Buy</a>
+              </li>
+              <li class="">
+                <a class="form-tab" name="form-tab" id="sell-tab" href="#sell" role="tab" aria-controls="profile">Sell</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="buy-tab">
+                <!-- Form  -->
+                  <form id="app" class="flex">
+                    <div class="flex-grp btn-group btn-group-lg" role="group">
+                      <button v-for="(coin, key) in coins" type="button"  v-bind:class="[isActive(key)? 'active': '', 'btn btn-grp']" v-on:click="selectCoin(key)">{{coin.name}}</button>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-6">
+                          <input type="text" class="form-control form-reset" name="amount" value="" placeholder="Amount in currency" v-model="amount" v-on:keyup="calculateCryptoValue">
+                        </div>
+                        <div class="col-6">
+                          <select v-model="currencyIndex" class="form-control form-reset" name="" v-on:change="changeCurrency">
+                            <option  v-for="(cur, key) in currencies" :value="key">{{cur.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group pb-16">
+                      <input class="form-control br-0" type="text" name="" value="" placeholder="Amount in cryptocurrency" v-model="currentUnit" v-on:keyup="changeCurFromCrypto">
+                    </div>
+                    <!-- Button to buy -->
+                    <button class="btn btn-search br-0">Proceed</button>
+
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="chart-wrap">
+            <img src="assets/img/group-20.png" alt="BitCoin Graph">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <section class="features">
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <!-- Card -->
+              <div class="card">
+                <div class="card-media">
+                  <img src="assets/img/icons/group-8.png" alt="">
+                </div>
+                <div class="card-body">
+                  <div class="card-title">
+                    <h5>Mobile Wallet</h5>
+                  </div>
+                  <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac velit luctus, luctus felis id, luctus ex. Suspendisse tempus ut augue </p>
+                    <a href="#">Read More...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <!-- Card -->
+              <div class="card">
+                <div class="card-media">
+                  <img src="assets/img/icons/group-9.png" alt="">
+                </div>
+                <div class="card-body">
+                  <div class="card-title">
+                    <h5>Secured Storage</h5>
+                  </div>
+                  <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac velit luctus, luctus felis id, luctus ex. Suspendisse tempus ut augue </p>
+                    <a href="#">Read More...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <!-- Card -->
+              <div class="card">
+                <div class="card-media">
+                  <img src="assets/img/icons/group-10.png" alt="">
+                </div>
+                <div class="card-body">
+                  <div class="card-title">
+                    <h5>Insurance Protection</h5>
+                  </div>
+                  <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac velit luctus, luctus felis id, luctus ex. Suspendisse tempus ut augue </p>
+                    <a href="#">Read More...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <!-- Card -->
+              <div class="card">
+                <div class="card-media">
+                  <img src="assets/img/icons/group-7.png" alt="">
+                </div>
+                <div class="card-body">
+                  <div class="card-title">
+                    <h5>Full Control</h5>
+                  </div>
+                  <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac velit luctus, luctus felis id, luctus ex. Suspendisse tempus ut augue </p>
+                    <a href="#">Read More...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="partners">
+        <div class="section-head">
+          <h3>Our Partners</h3>
+        </div>
+        <div class="container">
+          <div class="row">
+            <!-- Partner container -->
+            <div class="partner-wrap">
+
+              <div class="partner-item">
+                <div class="partner-logo">
+                  <img src="assets/img/logos/swissquote-black-logo-523-x-223@2x.png" alt="">
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac velit luctus, luctus felis id, luctus ex. </p>
+              </div>
+
+              <div class="partner-item">
+                <div class="partner-logo">
+                  <img src="assets/img/logos/caceis-bank-logo-svg@3x.png" alt="">
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac velit luctus, luctus felis id, luctus ex. </p>
+              </div>
+
+              <div class="partner-item">
+                <div class="partner-logo">
+                  <img src="assets/img/logos/ripple@3x.png" alt="">
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac velit luctus, luctus felis id, luctus ex. </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section> <!-- /Partners -->
+
+      <section class="start">
+        <div class="section-head">
+          <h3>how to get started</h3>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-7">
+              <div class="start-steps">
+
+                <div class="step blue">
+                  <div class="step-left">
+                    1
+                  </div>
+                  <div class="step-right">
+                    <h5>Sign up</h5>
+                    <p>Create a digital currency wallet where you can securely  store digital currency.</p>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <div class="step-left">
+                    2
+                  </div>
+                  <div class="step-right">
+                    <h5>Connect</h5>
+                    <p>Create a digital currency wallet where you can securely  store digital currency.</p>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <div class="step-left">
+                    3
+                  </div>
+                  <div class="step-right">
+                    <h5>Buy Digital Currency</h5>
+                    <p>Create a digital currency wallet where you can securely  store digital currency.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="img-wrap">
+                <img src="assets/img/group-4.png" alt="sign up Image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial">
+        <div class="section-head">
+          <h3>The Best Cryptocurrency trading website</h3>
+        </div>
+
+        <div class="container testimonial-body">
+          <div class="row">
+            <p>The best bitcoin exchange is needed for serious and professional bitcoin traders. Bitcoin security must be impeccable. Banking relationships must be sound and reliable. The trading engine must be fast. Order types must be advanced. And profits must be able to be multiplied with Bitcoin margin trading so you can leverage long bitcoin positions or short bitcoin positions.</p>
+          </div>
+          <button class="btn btn-default" type="button">Sign Up</button>
+        </div>
+      </section>
+
+      <section class="media-partners">
+        <div class="section-head">
+          <h3>media about us</h3>
+        </div>
+        <div class="container flex-c">
+          <div class="row media-body">
+
+            <div class="logo-wrap">
+              <div class="media-logo">
+                <img src="assets/img/logos/coindesk.png" alt="">
+              </div>
+
+              <div class="media-logo">
+                <img src="assets/img/logos/techcrunch.png" alt="">
+              </div>
+
+              <div class="media-logo">
+                <img src="assets/img/logos/the-new-york-times-vector-logo.png" alt="">
+              </div>
+
+              <div class="media-logo">
+                <img src="assets/img/logos/forbes-logo.png" alt="">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <ul class="footer-links">
+              <li class="link-title">About us</li>
+              <ul class="link-list">
+                <li><a href="">Who are we</a></li>
+                <li><a href="">Internal Processors</a></li>
+                <li><a href="">Free Schedule</a></li>
+                <li><a href="">Terms Of Use</a></li>
+                <li><a href="">Privacy Policy</a></li>
+              </ul>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul class="footer-links">
+              <li class="link-title">help</li>
+              <ul class="link-list">
+                <li><a href="">What is Bitcoin</a></li>
+                <li><a href="">How to buy bitcoin</a></li>
+                <li><a href="">How to sell bitcoin</a></li>
+                <li><a href="">FAQ</a></li>
+                <li><a href="">Fap Key</a></li>
+              </ul>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul class="footer-links">
+              <li class="link-title">contact us</li>
+              <ul class="link-list">
+                <p>info@senex.com</p>
+                <p>press@senex.com</p>
+                <p>support@senex.com</p>
+                <p>+234 8073404090</p>
+              </ul>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul class="footer-links">
+              <li class="link-title">tools</li>
+              <ul class="link-list">
+                <li><a href="">Overview</a></li>
+                <li><a href="">Order book</a></li>
+                <li><a href="">API</a></li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row foot-logos">
+          <div class="col-6 text-right">
+            <img class="foot-logo" src="assets/img/mastercard.png" alt="">
+            <img class="foot-logo" src="assets/img/visa.png" alt="">
+            <img class="foot-logo" src="assets/img/verve.png" alt="">
+          </div>
+          <div class="col-6 text-left">
+            <a href="#"><img class="foot-icon" src="assets/img/fill-3.png" alt=""></a>
+            <a href="#"><img class="foot-icon" src="assets/img/fill-1.png" alt=""></a>
+            <a href="#"><img class="foot-icon" src="assets/img/fill-33.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+        <script src="assets/vendors/js/jquery-1.11.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.8/vue.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+        <script src="assets/js/app.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+
+        <script src="assets/vendors/js/bootstrap.min.js"></script>
+
+        <script src="assets/js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!-- <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script> -->
+    </body>
+</html>
