@@ -1,5 +1,5 @@
 "use strict";
-Vue.http.headers.common['Access-Control-Allow-Origin'] = '*';
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -10,11 +10,12 @@ var app = new Vue({
     selectedOperation: 'BUY',
     amount: 0,
     currencyIndex: 0,
-    currentUnit: '',
-    coinActiveClass: 'btn-grp active',
-    coinClass: 'btn-grp'
+    currentUnit: ''
   },
   created: function () {
+
+
+
     this.getCurrencies();
     this.getCoins();
   },
@@ -55,7 +56,11 @@ var app = new Vue({
       }
     },
     getCoins: function () {
-      this.$http.get('https://api.coinmarketcap.com/v1/ticker/').then(response => {
+      var headers = {};
+      headers['Access-Control-Allow-Origin'] = "*";
+
+      this.$http.get('https://api.coinmarketcap.com/v1/ticker/', {}, { headers: headers})
+      .then(response => {
         var selected_coins = ['BTC', 'BCH', 'ETH', 'LTC', 'NEO'],
         counter = 1;
         for (var i = 0; i < response.body.length; i++) {
@@ -71,10 +76,16 @@ var app = new Vue({
       });
     },
     getCurrencies: function () {
-      this.$http.get('https://free.currencyconverterapi.com/api/v5/convert?q=USD_NGN&compact=y')
+      var headers = {};
+      headers['Access-Control-Allow-Origin'] = "*";
+      // headers['Access-Control-Allow-Headers']= 'Origin, X-Requested-With, Content-Type, Accept';
+      // bec8bb40527641a9a4bebaf474b153fc
+      // https://free.currencyconverterapi.com/api/v5/convert?q=USD_NGN&compact=y
+      this.$http.get('https://openexchangerates.org/api/latest.json?app_id=bec8bb40527641a9a4bebaf474b153fc&symbols=NGN', {}, { headers: headers})
       .then(response => {
+
         this.currencies.push({name: 'Select Currency', dollar_rate: 0},
-                            {name: 'Naira', dollar_rate: response.body.USD_NGN.val.toFixed(2)},
+                            {name: 'Naira', dollar_rate: response.body.rates.NGN.toFixed(2)},
                             {name: 'USD', dollar_rate: 1}
                             );
       },
